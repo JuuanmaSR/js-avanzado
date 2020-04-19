@@ -76,3 +76,36 @@ console.log(juan.nombre); //sigue siendo "Juan"
 jose.__proto__.__proto__.apellido = "Pérez"; //en este caso nadie tenía apellido, por lo que se crea con este valor.
 console.log(juan.apellido, pepe.apellido); //Pérez Pérez
 
+
+
+// Method override (pisar métodos)
+class A {
+  a(){
+    return this.b();
+  }
+
+  b(){
+    return 'A';
+  }
+
+  c(){
+    return 'A';
+  }
+}
+
+class B extends A{
+  b(){
+    return 'B';
+  }
+}
+
+const a = new A();
+const b = new B();
+
+
+console.table([
+  ['Método', 'Objeto A', 'Objeto B'],  
+  ['método a', a.a(), b.a()], //incluso si b no reemplaza el método "a", al llamar a "this.b()" está llamando al método `b` de B.
+  ['método b', a.b(), b.b()],
+  ['método c', a.c(), b.c()],
+]);

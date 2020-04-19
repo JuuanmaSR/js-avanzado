@@ -21,7 +21,8 @@ persona2.nombre = "Pepe";
 persona2.decirHola(); //Hola Pepe. persona2 = this
 
 const saludar = function(){
-  console.log("Saludos ", this.nombre); //notar que "this.nombre" no es nada al momento de definir la función
+  console.log('this adentro de saludar', this);
+  // console.log("Saludos ", this.nombre); //notar que "this.nombre" no es nada al momento de definir la función
 }
 
 saludar(); //Saludos undefined
@@ -32,9 +33,10 @@ persona2.saludar = saludar;
 persona2.saludar(); //Saludos Pepe
 
 
-//notar que "this" en este caso es "undefined" ó "window" dependiendo del uso de strict.
-// NO ES CONTEXTUAL
-const saludarFlecha = () => console.log("Saludos ", this.nombre);
+//La función flecha NO ES CONTEXTUAL
+//notar que "this" en este caso es "window"
+// window.nombre = "pepe";
+const saludarFlecha = () => console.log("Saludos (flecha) ", this.nombre);
 saludarFlecha(); //Saludos undefined
 persona.saludar = saludarFlecha;
 persona2.saludar = saludarFlecha;
@@ -46,4 +48,3 @@ persona2.saludar(); //Saludos undefined
 saludar.bind(persona)(); //Saludos Fabricio
 saludar.bind(persona2)(); //Saludos Pepe
 // .call y .apply son similares, buscarlas en MDN
-
