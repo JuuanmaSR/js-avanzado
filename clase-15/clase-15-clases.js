@@ -13,11 +13,13 @@ class Persona{
   }
 }
 
-const fabricio = new Persona("Fabricio"); //Instancio una nueva clase  "Persona" y le paso un nombre como primer parámetro.
+const fabricio = new Persona("Fabricio"); //Instancio una nueva clase "Persona" y le paso un nombre como primer parámetro.
 // la variable fabricio es ahora de tipo Persona.
+console.log(fabricio);
 console.log(fabricio.nombre); // Fabricio
 console.log(Persona.enCuarentena); // Método estático accedido directamente desde la clase
 console.log(fabricio.presentar()); // Hola, mi nombre es Fabricio
+
 //se pueden agregar propiedades
 fabricio.clubFavorito = 'Independiente';
 console.log(fabricio.clubFavorito);
@@ -25,7 +27,7 @@ console.log(fabricio.clubFavorito);
 //==========
 // Herencia
 //==========
-class Bombero extends Persona{
+class Bombero extends Persona {
   static nombreProfesion = "Bombero"
 }
 
@@ -53,7 +55,10 @@ console.log(juan.clubFavorito);
 const jose = new Programador("Jose", "Junior"); //ahora hay 2 programadores.
 
 // Concepto de prototype y __proto__ 
-// JavaScript es muy flexible y podemos modificar las propiedades de las clases incluso una vez que hayan objetos instanciados 
+// JavaScript es muy flexible y podemos modificar las 
+// propiedades de las clases incluso una vez que hayan objetos instanciados
+
+console.log(juan.nacionalidad);
 
 Persona.prototype.nacionalidad = 'Argentina';
 
@@ -76,7 +81,7 @@ console.log(juan.nombre); //sigue siendo "Juan"
 jose.__proto__.__proto__.apellido = "Pérez"; //en este caso nadie tenía apellido, por lo que se crea con este valor.
 console.log(juan.apellido, pepe.apellido); //Pérez Pérez
 
-
+// 
 
 // Method override (pisar métodos)
 class A {
@@ -93,7 +98,7 @@ class A {
   }
 }
 
-class B extends A{
+class B extends A {
   b(){
     return 'B';
   }
@@ -102,9 +107,8 @@ class B extends A{
 const a = new A();
 const b = new B();
 
-
 console.table([
-  ['Método', 'Objeto A', 'Objeto B'],  
+  ['Método', 'Objeto A', 'Objeto B'],
   ['método a', a.a(), b.a()], //incluso si b no reemplaza el método "a", al llamar a "this.b()" está llamando al método `b` de B.
   ['método b', a.b(), b.b()],
   ['método c', a.c(), b.c()],

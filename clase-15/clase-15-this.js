@@ -1,5 +1,6 @@
-// "use strict"
-console.log('this', this); //por default es "window",  globalmente
+// "use strict";
+
+console.log('this', this); //por default es "window", globalmente
 
 //dentro de funciones
 function x(){
@@ -20,28 +21,29 @@ const persona2 =  Object.assign({}, persona);
 persona2.nombre = "Pepe";
 persona2.decirHola(); //Hola Pepe. persona2 = this
 
+
 const saludar = function(){
   console.log('this adentro de saludar', this);
-  // console.log("Saludos ", this.nombre); //notar que "this.nombre" no es nada al momento de definir la función
+  console.log("Saludos ", this.nombre); //notar que "this.nombre" no es nada al momento de definir la función
 }
 
 saludar(); //Saludos undefined
 
 persona.saludar = saludar;
-persona.saludar(); //Saludos Fabricio
+persona.saludar(); //Saludos Fabricio. this = persona
 persona2.saludar = saludar;
-persona2.saludar(); //Saludos Pepe
+persona2.saludar(); //Saludos Pepe. this = persona2
 
 
-//La función flecha NO ES CONTEXTUAL
-//notar que "this" en este caso es "window"
+// La función flecha NO ES CONTEXTUAL
+// notar que "this" en este caso es "window"
 // window.nombre = "pepe";
 const saludarFlecha = () => console.log("Saludos (flecha) ", this.nombre);
 saludarFlecha(); //Saludos undefined
 persona.saludar = saludarFlecha;
 persona2.saludar = saludarFlecha;
-persona.saludar(); //Saludos undefined
-persona2.saludar(); //Saludos undefined
+persona.saludar(); //Saludos undefined. this != persona
+persona2.saludar(); //Saludos undefined. this != persona2
 
 
 // Ejemplo con bind para cambiar el contexto de this

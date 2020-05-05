@@ -1,7 +1,6 @@
 // https://docs.google.com/document/d/11U1TNn-YpebK8JY6mvXSZhIa4TDW-tIhsNGZe7-QTSY/edit
 
 // Repaso de objetos
-
 console.log('Repaso de objetos');
 let objeto = {};
 console.log(objeto);
@@ -11,7 +10,7 @@ console.log(objeto);
 // for...in
 console.log('for...in');
 for(let key in {a: 1, b:2}){
-  console.log(key);
+  console.log(key); //a,b
 }
 
 // funciona también con keys con valor undefined
@@ -21,7 +20,6 @@ for(let key in {a: 1, b:2, c: undefined}){
 
 
 // funciona con índices de arrays y strings
-
 console.log("arrays...");
 for(let key in [1,2]){
   console.log(key); //0,1
@@ -53,10 +51,8 @@ for(let val of "hola"){
 
 /// variables por valor y por referencia
 // referencia = guardados en memoria (RAM)
-
-
 console.log('por valor...');
-let val1 = 1
+let val1 = 1;
 let val2 = val1;
 console.table([['val1', 'val2'], [val1, val2]]);
 
@@ -68,8 +64,14 @@ console.log('por referencia...');
 let ref1 = {a: 1};
 let ref2 = {b: 2};
 
+// [ADDRESS, VALOR]
+// [0X0001, {A: 1}]
+// [0X0002, {B: 2}]
+// [0X0003, REF1 = 0X0001, REF2 = 0X0002]
 console.table([['ref1', 'ref2'], [ref1, ref2]]);
+
 ref2 = ref1
+// [0X0003, REF1 = 0X0001, REF2 = 0X0001]
 console.table([['ref1', 'ref2'], [ref1, ref2]]);
 ref1.a = "hola"
 console.table([['ref1', 'ref2'], [ref1, ref2]]); //ambos objetos ahora tiene a = hola, porque en realidad son EL MISMO OBJETO
@@ -77,8 +79,8 @@ console.table([['ref1', 'ref2'], [ref1, ref2]]); //ambos objetos ahora tiene a =
 console.log('ref1 === ref2', ref1 === ref2); //true, son EL MISMO OBJETO
 console.log('{} === {}', {} === {}); // false, los objetos tienen la misma estructura, pero son DISTINTOS OBJETOS
 
-//Es importante tener en cuenta estos conceptos cuando se pasan como parámetros, porque van a estar modificando el mismo objeto.
-
+//Es importante tener en cuenta estos conceptos cuando se pasan como parámetros, 
+// porque van a estar modificando el mismo objeto.
 console.log('por referencia...');
 function agregarPropiedad(obj){
   obj.propiedadNueva = "nueva propiedad";
@@ -107,7 +109,6 @@ const obj2 = Object.assign({}, obj1);
 console.log('obj1 == obj2', obj1, obj2, obj1 == obj2); //false, no son el mismo objeto
 
 // objetos "nesteados"
-
 const obj3 = {a: 1, b: {c: 2}};
 const obj4 = Object.assign({}, obj3);
 obj3.b.c = 3;
@@ -122,6 +123,15 @@ console.table([["obj3.b.c", "obj5.b.c"], [obj3.b.c, obj5.b.c], [obj3, obj5]]);
 
 // Ejemplo de recolección de basura forzado
 try{
+
+  //{
+  //  datosPokemon = traerDatosDePokemon //<--- variable con muchos datos
+  //  renderearPokemones(datosPokemon)
+  //}
+  //..
+  //.. 20 operaciones más
+  // termina la función
+
   // recolección de basura
   {
     let x = 1;
