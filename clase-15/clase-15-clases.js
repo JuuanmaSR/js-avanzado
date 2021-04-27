@@ -32,6 +32,7 @@ class Bombero extends Persona{
 const pepe = new Bombero("Pepe"); //hereda el constructor de Persona
 console.log(pepe.presentar()); // Hola, mi nombre es Pepe
 
+
 class Programador extends Persona{
   static nombreProfesion = "Programador"
   

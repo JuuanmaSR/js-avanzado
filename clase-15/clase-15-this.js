@@ -22,7 +22,7 @@ persona2.decirHola(); //Hola Pepe. persona2 = this
 
 const saludar = function(){
   console.log('this adentro de saludar', this);
-  // console.log("Saludos ", this.nombre); //notar que "this.nombre" no es nada al momento de definir la función
+   console.log("Saludos ", this.nombre); //notar que "this.nombre" no es nada al momento de definir la función
 }
 
 saludar(); //Saludos undefined
